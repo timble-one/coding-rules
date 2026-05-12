@@ -1,26 +1,29 @@
-# Codestyle
-- Strongly domain-driven and modular (colocation of what belongs together)
-- The code has to be as minimalistic as possible. If there is standard-functionality, use well known libraries to make the code as simple as possible.  
-- Use any programming-language/framework/library that makes the code simplest and most readable
-- if a single class is not the only thing a file contains, constants that are longer than three lines should be extracted from the class
-- if a file contains multiple classes and one depends on another, the dependend class must come first because it is more important
-- if there are exclusive dependencies between files or folders, they must be wrapped inside a folder, if the dependency is unidirectional the folder must get the name of the dependant file
-- a function can never be longer than 15 lines except it is a pure mapping-function, otherwise it must be extracted
-- dont just group loose function into files if they only have one dependant caller
-- don't make micro-extractions, if a function is shorter than 5 lines and the extracted function that is exclusively referenced from this function to, undo the extraction
+# Codestyle v1
+
+## Architecture
+- Code must be strongly domain-driven and modular: colocate what belongs together.
+- Exclusive file/folder dependencies must be wrapped in a folder; if the dependency is unidirectional, name the folder after the dependant file.
+- File names should not contain namespace parts.
+
+## Simplicity
+- Keep code as minimal as possible; use standard functionality and well-known libraries when they make code simpler.
+- Use the programming language, framework, or library that makes code simplest and most readable.
+
+## File structure
+- If a single class is not the only thing in a file, extract constants longer than three lines from the class.
+- If a file contains multiple classes and one depends on another, the dependent class must come first.
+
+## Extraction
+- A function can never exceed 15 lines except pure mapping-functions; otherwise extract it.
+- Don't make micro-extractions: if a function and its exclusively referenced extraction are each shorter than 5 lines, undo the extraction.
 
 ## Pure mapping-function
-This is a function that does only map date and nothing else. It is not allowed to consist of a loop for example.  
+A pure mapping-function only maps date and nothing else. It must not contain loops.
 
 ## Dependency-levels in files
-The following dependency-rules apply to all of these units and every combination of them:  
-- constant-definitions and  that are longer than three lines
-- functions
-- class definitions
+The following dependency-rules apply to both of these units: functions and classes
 
-If a file contains a unit that directly depends on more than one subunit, then no subunit of those subunits may remain in the same file.
-In that case, the file may only contain:
- - the parent unit
- - its direct subunits
-Any deeper dependency level must be moved into a separate dependant-named file or folder.
-A same-file dependency chain is only allowed when each unit has exactly one exclusive dependant in that file, so the file reads strictly top-down as a single chain.
+ - If a unit in a file depends directly on multiple subunits, those subunits may stay in the same file, but their own dependencies must be moved out.
+ - The file may contain only the parent unit and its direct subunits.
+ - Move deeper dependency levels into a separate dependant-named file or folder.
+ - A same-file dependency chain with infinite levels is allowed only when each unit has exactly one exclusive dependant in that file, so the file reads strictly top-down as a single chain.
