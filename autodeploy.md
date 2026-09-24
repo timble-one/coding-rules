@@ -1,4 +1,4 @@
-# Autodeployment v2
+# Autodeployment v3
 
 - Add a github ci-action which builds the docker-image and deploys it on ghci.io.   
 The last step of the github-workflow must be to deploy the project on the production server.  
@@ -9,3 +9,4 @@ The last step of the github-workflow must be to deploy the project on the produc
   - `make update`: normally just `pull-prod` + `prod`
 - For the production-deployment, the github-workflow must use appleboy/ssh-action and only pass `host` and `username` as github-variable and the `key` as github-secret to the ssh-action.  
 - The ssh-connection will automatically trigger the deployment-script on the production-server. The script does not have to be called explicitly from the github-workflow.  
+- Deployment acceptance tests validate repository configuration. Publishing images, connecting to production, and executing production deployment are not currently required acceptance tests.
