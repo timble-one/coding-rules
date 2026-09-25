@@ -32,3 +32,7 @@ networks:
 
 Keep in mind, that the project-name-tld is a placeholder and must be replaced by a unique name.
 It is a good practice to use the domain-name including subdomain(s) and top-level-domain because it has to be unique on the server.
+
+
+**Multienvironment Projects**  
+If projects have a prod-specific compose-file (e.g. `compose.prod.yaml`) it should be assumed that the reverse-proxy is only used in production and the above configurations should therefore be applied to the according compose file.
