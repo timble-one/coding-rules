@@ -8,6 +8,6 @@ The following is an example spec, how requirement-modules should be included int
 
 ```
 Use these requirement modules:
-github.com/timble-one/coding-rules/requirement-modules.md
-github.com/timble-one/coding-rules/autodeployment.md v3
+- github.com/timble-one/coding-rules/requirement-modules.md v0
+- github.com/timble-one/coding-rules/autodeployment.md v3
 ```
