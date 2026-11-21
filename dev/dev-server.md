@@ -1,7 +1,8 @@
-# Dev-Server
+# Dev-Server v2
 - These instructions are meant to be applied directly and not by the implementation of this project.
 - The idea is that this spec can be put onto an empty dev-server and have the server configured by the agent (you).
-- If one deploys the implementation of this application, one can assume that the server itself is allready configured.
+- The application itself must be implemented under the assumption that the server-configuration is given.
+- If you are currently implementing an application and reading this, you must make sure the application gets deployed at the default-host, so it is directly available after the implementation is finished.
 
 ##   Configuration
  - Install tmux and btop.
