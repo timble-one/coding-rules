@@ -1,4 +1,4 @@
-# Traefik v1
+# Traefik v2
 
 This is a standard, how to configure a web-project to be servable by traefik.
 
@@ -6,13 +6,9 @@ The following is an example of how a minimal docker compose file would have to l
 ```yaml
 services:
   web:
-    image: nginx:alpine
     restart: unless-stopped
-    networks:
-      - proxy
     labels:
       traefik.enable: "true"
-      traefik.docker.network: "proxy"
       traefik.http.routers.${TRAEFIK_ROUTER:?Set TRAEFIK_ROUTER}.rule: "Host(`${APP_HOST:?Set APP_HOST}`)"
       traefik.http.routers.${TRAEFIK_ROUTER}.entrypoints: "websecure"
       traefik.http.routers.${TRAEFIK_ROUTER}.tls: "true"
@@ -23,10 +19,6 @@ services:
       traefik.http.routers.${TRAEFIK_ROUTER}-http.middlewares: "${TRAEFIK_ROUTER}-https"
       traefik.http.middlewares.${TRAEFIK_ROUTER}-https.redirectscheme.scheme: "https"
       traefik.http.middlewares.${TRAEFIK_ROUTER}-https.redirectscheme.permanent: "true"
-
-networks:
-  proxy:
-    external: true
 
 ```
 
