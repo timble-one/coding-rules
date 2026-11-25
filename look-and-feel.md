@@ -1,6 +1,7 @@
-# Look and Feel
-- The Application must be fancy but minimal and not contains some generic bla-bla text.
-- A favicon must be implemented.
+# Look and Feel v2
+- Must be fancy but minimal and not contains some generic bla-bla text.
+- Must implement a favicon.
+- Must support dark and light mode and automatically apply it from the system.
 
 ## Style
 The UI of the app must be styled according to these instructions:
